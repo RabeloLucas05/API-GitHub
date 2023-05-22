@@ -12,6 +12,12 @@ const MainPage = () => {
   // UseState para o input de busca do login
   const [login, setLogin] = useState("");
 
+  const handleKeyPress = (event) => {
+    if (event.key === "Enter") {
+      // Perform the same action as clicking the button
+      window.location.href = `/${login}/repositories`;
+    }
+  };
   return (
     <Container>
       <Logo src={githubLogo} alt="API Github" />
@@ -23,6 +29,7 @@ const MainPage = () => {
           placeholder="Usuário"
           value={login}
           onChange={(event) => setLogin(event.target.value)}
+          onKeyPress={handleKeyPress}
         />
         {/* pega o valor do login e joga no repositories  */}
         <Button to={`/${login}/repositories`}>
